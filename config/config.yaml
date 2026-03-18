@@ -4,6 +4,10 @@ ui:
   headless: true
   implicit_wait_seconds: 2
   explicit_wait_seconds: 10
+  enable_visual_steps: true
+  action_pause_seconds: 0.4
+  scroll_pause_seconds: 0.5
+  scroll_behavior: "smooth"
 
 api:
   base_url: "https://jsonplaceholder.typicode.com"
