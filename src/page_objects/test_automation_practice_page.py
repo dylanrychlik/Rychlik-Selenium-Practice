@@ -73,9 +73,14 @@ class AutomationPracticePage:
         )
         self.pause(scroll=True)
 
+    def scroll_by_pixels(self, pixels: int) -> None:
+        self.driver.execute_script("window.scrollBy({top: arguments[0], behavior: arguments[1]});", pixels, self.scroll_behavior)
+        self.pause(scroll=True)
+
     def quick_page_preview(self) -> None:
         """Scroll down and back up to make visual changes easy to observe."""
-        self.scroll_to_bottom()
+        # Keep preview light to avoid stressing headless browsers on long pages.
+        self.scroll_by_pixels(500)
         self.scroll_to_top()
 
     def fill_contact_details(self, name: str, email: str, phone: str) -> None:
