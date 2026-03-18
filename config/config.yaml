@@ -1,0 +1,10 @@
+ui:
+  base_url: "https://testautomationpractice.blogspot.com/"
+  browser: "chrome"
+  headless: true
+  implicit_wait_seconds: 2
+  explicit_wait_seconds: 10
+
+api:
+  base_url: "https://jsonplaceholder.typicode.com"
+  timeout_seconds: 15
