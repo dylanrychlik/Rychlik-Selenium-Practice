@@ -1,7 +1,7 @@
 ui:
   base_url: "https://testautomationpractice.blogspot.com/"
   browser: "chrome"
-  headless: true
+  headless: false
   implicit_wait_seconds: 2
   explicit_wait_seconds: 10
   enable_visual_steps: true
