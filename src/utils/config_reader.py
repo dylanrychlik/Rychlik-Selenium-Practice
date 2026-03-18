@@ -30,5 +30,13 @@ def load_config() -> dict[str, Any]:
         config["ui"]["browser"] = os.environ["UI_BROWSER"].lower()
     if os.getenv("UI_HEADLESS"):
         config["ui"]["headless"] = os.environ["UI_HEADLESS"].lower() == "true"
+    if os.getenv("UI_ENABLE_VISUAL_STEPS"):
+        config["ui"]["enable_visual_steps"] = os.environ["UI_ENABLE_VISUAL_STEPS"].lower() == "true"
+    if os.getenv("UI_ACTION_PAUSE_SECONDS"):
+        config["ui"]["action_pause_seconds"] = float(os.environ["UI_ACTION_PAUSE_SECONDS"])
+    if os.getenv("UI_SCROLL_PAUSE_SECONDS"):
+        config["ui"]["scroll_pause_seconds"] = float(os.environ["UI_SCROLL_PAUSE_SECONDS"])
+    if os.getenv("UI_SCROLL_BEHAVIOR"):
+        config["ui"]["scroll_behavior"] = os.environ["UI_SCROLL_BEHAVIOR"].lower()
 
     return config

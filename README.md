@@ -62,7 +62,10 @@ Selenium-testautomationpractice/
 
 - Uses **explicit waits** (`WebDriverWait`) in page object methods
 - Uses stable locators (`By.ID`) wherever possible
-- Reusable methods encapsulated in a Page Object (`TestAutomationPracticePage`)
+- Reusable methods encapsulated in a Page Object (`AutomationPracticePage`)
+- Includes configurable **visual steps** for UI tests:
+  - smooth scroll to elements before interactions
+  - brief pauses between actions so UI changes are observable
 
 ---
 
@@ -81,6 +84,7 @@ Selenium-testautomationpractice/
 Default config is stored in `config/config.yaml`:
 
 - UI base URL, browser, headless mode, timeouts
+- UI visual-step controls (scroll + pause durations)
 - API base URL and request timeout
 
 ### Optional Environment Variable Overrides
@@ -89,6 +93,10 @@ Default config is stored in `config/config.yaml`:
 - `API_BASE_URL`
 - `UI_BROWSER` (`chrome` or `firefox`)
 - `UI_HEADLESS` (`true` or `false`)
+- `UI_ENABLE_VISUAL_STEPS` (`true` or `false`)
+- `UI_ACTION_PAUSE_SECONDS` (example: `0.4`)
+- `UI_SCROLL_PAUSE_SECONDS` (example: `0.5`)
+- `UI_SCROLL_BEHAVIOR` (`auto`, `smooth`, `instant`)
 
 ---
 
@@ -148,3 +156,4 @@ pytest --junitxml=reports/results.xml
 
 - UI tests are configured to run headless by default.
 - Selenium requires a compatible browser installed locally (Chrome/Firefox).
+- To watch browser interactions, set `headless: false` in `config/config.yaml` or export `UI_HEADLESS=false`.

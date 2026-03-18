@@ -59,6 +59,19 @@ def driver(config: dict):
 
 @pytest.fixture
 def practice_page(driver, config: dict) -> AutomationPracticePage:
-    page = AutomationPracticePage(driver, timeout_seconds=config["ui"]["explicit_wait_seconds"])
+    ui_config = config["ui"]
+    scroll_behavior = ui_config.get("scroll_behavior", "auto")
+    if ui_config.get("headless") and scroll_behavior == "smooth":
+        # Headless environments are more stable with non-animated scrolling.
+        scroll_behavior = "auto"
+
+    page = AutomationPracticePage(
+        driver,
+        timeout_seconds=ui_config["explicit_wait_seconds"],
+        enable_visual_steps=ui_config.get("enable_visual_steps", False),
+        action_pause_seconds=ui_config.get("action_pause_seconds", 0.0),
+        scroll_pause_seconds=ui_config.get("scroll_pause_seconds", 0.0),
+        scroll_behavior=scroll_behavior,
+    )
     page.open(config["ui"]["base_url"])
     return page

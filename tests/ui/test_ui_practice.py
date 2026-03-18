@@ -9,6 +9,7 @@ from src.page_objects.test_automation_practice_page import AutomationPracticePag
 
 @pytest.mark.ui
 def test_page_loads_and_title_is_correct(practice_page: AutomationPracticePage) -> None:
+    practice_page.quick_page_preview()
     expected_title = "Automation Testing Practice"
     practice_page.wait_for_title(expected_title)
     assert practice_page.driver.title == expected_title
@@ -16,6 +17,7 @@ def test_page_loads_and_title_is_correct(practice_page: AutomationPracticePage) 
 
 @pytest.mark.ui
 def test_fill_contact_form_and_submit(practice_page: AutomationPracticePage) -> None:
+    practice_page.quick_page_preview()
     input_data = {
         "name": "Alex Tester",
         "email": "alex.tester@example.com",
@@ -31,6 +33,7 @@ def test_fill_contact_form_and_submit(practice_page: AutomationPracticePage) -> 
 
 @pytest.mark.ui
 def test_radio_buttons_and_checkboxes(practice_page: AutomationPracticePage) -> None:
+    practice_page.quick_page_preview()
     practice_page.select_gender("male")
     practice_page.select_day("monday")
     practice_page.select_day("wednesday")
@@ -42,6 +45,7 @@ def test_radio_buttons_and_checkboxes(practice_page: AutomationPracticePage) -> 
 
 @pytest.mark.ui
 def test_dropdown_selection_and_verification(practice_page: AutomationPracticePage) -> None:
+    practice_page.quick_page_preview()
     practice_page.select_country("India")
     practice_page.select_color("Red")
 
@@ -51,6 +55,7 @@ def test_dropdown_selection_and_verification(practice_page: AutomationPracticePa
 
 @pytest.mark.ui
 def test_alert_handling_and_dynamic_result(practice_page: AutomationPracticePage) -> None:
+    practice_page.quick_page_preview()
     alert_text = practice_page.trigger_simple_alert_and_accept()
     assert alert_text == "I am an alert box!"
 
